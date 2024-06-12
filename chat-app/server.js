@@ -1,15 +1,14 @@
-// server.js
 const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
 const mongoose = require('mongoose');
-const cors = require('cors');  // Add CORS middleware to handle requests from the frontend
+const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
-mongoose.connect('mongodb://atlas-sql-66687be6da8a630fc85bd0d7-wgihm.a.query.mongodb.net/sample_mflix?ssl=true&authSource=admin/chat', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/chat', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const MessageSchema = new mongoose.Schema({
   user: String,
@@ -19,7 +18,7 @@ const MessageSchema = new mongoose.Schema({
 
 const Message = mongoose.model('Message', MessageSchema);
 
-app.use(cors());  // Use CORS middleware
+app.use(cors());
 
 app.get('/chats', async (req, res) => {
   try {
