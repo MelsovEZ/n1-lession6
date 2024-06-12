@@ -9,7 +9,7 @@ const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
-mongoose.connect('mongodb://localhost:27017/chat', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://atlas-sql-66687be6da8a630fc85bd0d7-wgihm.a.query.mongodb.net/sample_mflix?ssl=true&authSource=admin/chat', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const MessageSchema = new mongoose.Schema({
   user: String,
